@@ -1,18 +1,18 @@
-import java.util.Scanner;
-
+import java.util.LinkedList;
 public class FibbonaciSequence{
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        scan.close();
-        int[] FibbonaciTab = new int[n+3];
-        FibbonaciTab[0] = 0;
-        FibbonaciTab[1] = 1;
-        FibbonaciTab[2] = 1;
-        int kolejna;
-            for (int i = 3; i < n; i++) {
-                FibbonaciTab[i] = FibbonaciTab[i - 1] + FibbonaciTab[i - 2];
+
+        LinkedList<Integer> fibbonaciList = new LinkedList<>();
+        fibbonaciList.add(0);
+        fibbonaciList.add(1);
+        fibbonaciList.add(1);
+
+        int n = Integer.parseInt(args[0]);
+            for (int i = 2; i < n; i++) {
+                int fibbonaciNextElement = fibbonaciList.get(i) + fibbonaciList.get(i-1);
+                fibbonaciList.add(fibbonaciNextElement);
             }
-        System.out.println(FibbonaciTab[n-1]);
+
+        System.out.println(fibbonaciList.get(n));
     }
 }
